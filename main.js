@@ -125,7 +125,7 @@ function convertGrid(){
                }
                
             }else{
-               if((dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"')&& (dtTmp.replace(/"/g,'').trim()!='') ){ 
+               if((dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"')&& (dtTmp.replace(/"/g,'').trim()!='')){ 
                   var tmp = r.replace(dtTmp.replace(/"/g,''),'%$'+dtTmp.replace(/"/g,'')+':nokey$%')  
                   arrLg.push(dtTmp.replace(/"/g,''));
                   afterContent = afterContent.replace(r,tmp); 
