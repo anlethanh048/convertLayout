@@ -116,8 +116,8 @@ function convertGrid(){
             var dtTmp = r.trim().replace('name:','');
             
             if(c.indexOf('align:')==-1){  
-               if(dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"' ){  
-                  var tmp = r.replace(dtTmp.replace(/"/g,''),'%$'+dtTmp.replace(/"/g,'')+':'+dtTmp.replace(/"/g,'')+'$%')
+               if((dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"')&& (dtTmp.replace(/"/g,'').trim()!='')){  
+                  var tmp = r.replace(dtTmp.replace(/"/g,''),'%$'+dtTmp.replace(/"/g,'')+':nokey$%')
                   arrLg.push(dtTmp.replace(/"/g,''));
                   afterContent = afterContent.replace(r,tmp+',align: left');    
                }else{
@@ -125,8 +125,8 @@ function convertGrid(){
                }
                
             }else{
-               if(dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"' ){ 
-                  var tmp = r.replace(dtTmp.replace(/"/g,''),'%$'+dtTmp.replace(/"/g,'')+':'+dtTmp.replace(/"/g,'')+'$%')  
+               if((dtTmp.startsWith('"%$')== false || dtTmp.substring(dtTmp.length-3) !='$%"')&& (dtTmp.replace(/"/g,'').trim()!='') ){ 
+                  var tmp = r.replace(dtTmp.replace(/"/g,''),'%$'+dtTmp.replace(/"/g,'')+':nokey$%')  
                   arrLg.push(dtTmp.replace(/"/g,''));
                   afterContent = afterContent.replace(r,tmp); 
                }
@@ -139,6 +139,7 @@ function convertGrid(){
       // afterContent = afterContent.replace(c,c+',align: left'); 
       document.getElementById("reSult").value = afterContent
    } 
+   
    if(arrLg.length > 0){ 
       var arrTmp= arrLg.toString();  
       document.getElementById('multiLaguage').innerHTML= arrTmp.replace(/,/g,'\n')
